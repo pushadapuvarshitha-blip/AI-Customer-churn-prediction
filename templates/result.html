@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Prediction Result</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+
+<body>
+
+<div class="container">
+
+    <h1>Prediction Result</h1>
+
+    {% if prediction == "High Risk Customer" %}
+        <div class="result-box high-risk">
+            <h2>🔴 {{ prediction }}</h2>
+            <h3>Churn Probability : {{ probability }}%</h3>
+
+            <h3>Recommended Actions</h3>
+
+            <ul>
+                <li>✅ Offer Loyalty Discount</li>
+                <li>✅ Provide Premium Customer Support</li>
+                <li>✅ Recommend One-Year Contract</li>
+                <li>✅ Send Personalized Promotional Offers</li>
+            </ul>
+        </div>
+
+    {% else %}
+
+        <div class="result-box low-risk">
+            <h2>🟢 {{ prediction }}</h2>
+            <h3>Churn Probability : {{ probability }}%</h3>
+
+            <h3>Recommendation</h3>
+
+            <ul>
+                <li>✅ Customer is likely to stay.</li>
+                <li>✅ Continue providing quality service.</li>
+                <li>✅ Offer premium plans if interested.</li>
+            </ul>
+        </div>
+
+    {% endif %}
+
+    <br>
+
+    <a href="/">
+        <button>Predict Another Customer</button>
+    </a>
+
+</div>
+
+</body>
+</html>
